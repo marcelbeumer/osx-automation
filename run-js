@@ -1,0 +1,4 @@
+#!/bin/bash
+
+babel $1 > /tmp/$1.es5.js
+osascript -l JavaScript /tmp/$1.es5.js
