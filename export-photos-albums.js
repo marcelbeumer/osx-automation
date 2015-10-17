@@ -24,14 +24,19 @@ albums.forEach(album => {
     console.log(filename + ' => ' + path);
     photos.export([item], {to: path});
 
-    const videoPath = (path + '/' + filename).replace(/(.*)\.[0-9A-Za-z]+$/, '$1.m4v');
-    const cmd = 'ls "' + videoPath + '" && ' +
-      'SetFile -d "' + formattedDate + '" "' + videoPath + '"';
+    const fileRegex = /(.*)\.[0-9A-Za-z]+$/;
+    const target = (path + '/' + filename);
+    [
+      target.replace(fileRegex, '$1.m4v'),
+      target.replace(fileRegex, '$1.jpg')
+    ].forEach((file) => {
+      const cmd = 'ls "' + file + '" && ' +
+        'SetFile -d "' + formattedDate + '" "' + file + '"';
 
-    try {
-      app.doShellScript(cmd);
-      console.log('Set creation date for video file');
-    } catch (e) {
-    }
+      try {
+        app.doShellScript(cmd);
+      } catch (e) {
+      }
+    });
   });
 });
