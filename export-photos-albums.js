@@ -1,4 +1,3 @@
-// const photosLib = Library('Photos');
 const photos = Application('photos');
 const albums = photos.albums();
 
