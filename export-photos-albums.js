@@ -11,8 +11,6 @@ albums.forEach(album => {
   const items = album.mediaItems();
   const path = Path('./export/' + name);
 
-  // Export items one by one to prevent timeout
-  // Set creation data becausse photos might not set them for videos
   items.forEach(item => {
     const filename = item.filename();
     const date = item.date();
