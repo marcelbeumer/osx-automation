@@ -3,6 +3,7 @@
  * Requires CLI tools: SetFile, jpegoptim
  * Limitations:
  * - May not be able to use CLI tools when filenames are not unique within album
+ * - Script is slow compared to exporting from the app itself
 */
 const photos = Application('photos');
 const albums = photos.albums();
